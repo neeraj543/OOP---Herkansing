@@ -25,16 +25,16 @@ public class Game
      */
     public Game() 
     {
-        createRooms();
+        createGame();
         parser = new Parser();
     }
 
     /**
      * Create all the rooms and link their exits together.
      */
-    private void createRooms()
+    private void createGame()
     {
-        Room outside, theater, pub, lab, office;
+        Room outside, theater, pub, lab, office, cellar;
       
         // create the rooms
         outside = new Room("outside the main entrance of the university");
@@ -42,15 +42,28 @@ public class Game
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
+        cellar = new Room("in the pub cellar");
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        outside.setExit(Room.EAST, theater);
+        outside.setExit(Room.SOUTH, lab);
+        outside.setExit(Room.WEST, pub);
+        theater.setExit(Room.WEST, outside);
+        pub.setExit(Room.EAST, outside);
+        pub.setExit(Room.DOWN, cellar);
+        lab.setExit(Room.NORTH, outside);
+        lab.setExit(Room.EAST, office);
+        office.setExit(Room.WEST, lab);
+        cellar.setExit(Room.UP, pub);
 
         currentRoom = outside;  // start game outside
+
+        Item bakbier1;
+        bakbier1 = new Item("bakbier1", "een bak westmalle trappist", 8.3);
+        cellar.setItem(bakbier1);
+        cellar.setItem(new Item("dooschips1", "een doos paprika chips", 0.8));
+        cellar.setItem(new Item("bakcola1", "een bak cola", 7.1));
+        cellar.setItem(new Item("vatpils1", "een vat pils", 53.7));
     }
 
     /**
@@ -85,20 +98,7 @@ public class Game
     }
 
     private void printLocationInfo() {
-        System.out.println("You are " + currentRoom.getDescription());
-        System.out.print("Exits: ");
-        if(currentRoom.getExit("north") != null) {
-            System.out.print("north ");
-        }
-        if(currentRoom.getExit("east") != null) {
-            System.out.print("east ");
-        }
-        if(currentRoom.getExit("south") != null) {
-            System.out.print("south ");
-        }
-        if(currentRoom.getExit("west") != null) {
-            System.out.print("west ");
-        }
+        System.out.println(currentRoom.getFullDescription());
         System.out.println();
     }
 
@@ -162,18 +162,7 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = null;
-        if(direction.equals("north")) {
-            nextRoom = currentRoom.getExit("north");
-        }
-        if(direction.equals("east")) {
-            nextRoom = currentRoom.getExit("east");
-        }
-        if(direction.equals("south")) {
-            nextRoom = currentRoom.getExit("south");
-        }
-        if(direction.equals("west")) {
-            nextRoom = currentRoom.getExit("west");
-        }
+        nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");

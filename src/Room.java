@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -17,8 +18,15 @@ import java.util.HashMap;
 
 public class Room
 {
+    public static final String NORTH = "north";
+    public static final String EAST = "east";
+    public static final String SOUTH = "south";
+    public static final String WEST = "west";
+    public static final String UP = "up";
+    public static final String DOWN = "down";
     private String description;
     private HashMap<String, Room> exits;
+    private ArrayList<Item> items;
 
     /**
      * Create a room described "description". Initially, it has
@@ -30,26 +38,7 @@ public class Room
     {
         this.description = description;
         exits = new HashMap<>();
-    }
-
-    /**
-     * Define the exits of this room.  Every direction either leads
-     * to another room or is null (no exit there).
-     * @param north The north exit.
-     * @param east The east east.
-     * @param south The south exit.
-     * @param west The west exit.
-     */
-    public void setExits(Room north, Room east, Room south, Room west)
-    {
-        if(north != null)
-            exits.put("north", north);
-        if(east != null)
-            exits.put("east", east);
-        if(south != null)
-            exits.put("south", south);
-        if(west != null)
-            exits.put("west", west);
+        items = new ArrayList<>();
     }
 
     public void setExit(String direction, Room room) {
@@ -66,6 +55,35 @@ public class Room
     public String getDescription()
     {
         return description;
+    }
+
+    public String getExitString() {
+        String exitString = "Exits: ";
+        for(String direction : exits.keySet()) {
+            exitString += direction + " ";
+        }
+        return exitString;
+    }
+
+    public String getItemString() {
+        String itemString = "";
+        for(Item item : items) {
+            itemString += System.lineSeparator() + "  " + item.toString();
+        }
+        return itemString;
+    }
+
+    public String getFullDescription() {
+        String returnString = "You are " + getDescription();
+        if(!items.isEmpty()) {
+            returnString += " which contains" + getItemString();
+        }
+        returnString += System.lineSeparator() + getExitString();
+        return returnString;
+    }
+
+    public void setItem(Item item) {
+        items.add(item);
     }
 
 }
