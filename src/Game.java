@@ -18,13 +18,14 @@
 public class Game
 {
     private Parser parser;
-    private Room currentRoom;
+    private Player player;
         
     /**
      * Create the game and initialise its internal map.
      */
     public Game() 
     {
+        player = new Player("laurien");
         createGame();
         parser = new Parser();
     }
@@ -56,7 +57,7 @@ public class Game
         office.setExit(Room.WEST, lab);
         cellar.setExit(Room.UP, pub);
 
-        currentRoom = outside;  // start game outside
+        player.setCurrentRoom(outside);
 
         Item bakbier1;
         bakbier1 = new Item("bakbier1", "een bak westmalle trappist", 8.3);
@@ -98,7 +99,7 @@ public class Game
     }
 
     private void printLocationInfo() {
-        System.out.println(currentRoom.getFullDescription());
+        System.out.println(player.getCurrentRoom().getFullDescription());
         System.out.println();
     }
 
@@ -146,7 +147,7 @@ public class Game
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   " + parser.getCommandWords());
     }
 
     /** 
@@ -165,13 +166,13 @@ public class Game
 
         // Try to leave current room.
         Room nextRoom = null;
-        nextRoom = currentRoom.getExit(direction);
+        nextRoom = player.getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
-            currentRoom = nextRoom;
+            player.setCurrentRoom(nextRoom);
             printLocationInfo();
         }
     }
