@@ -41,6 +41,10 @@ public class Room
         items = new ArrayList<>();
     }
 
+    public Item getItem(String itemName) {
+        return null;
+    }
+
     public void setExit(String direction, Room room) {
         exits.put(direction, room);
     }
@@ -74,7 +78,7 @@ public class Room
     }
 
     public String getFullDescription() {
-        String returnString = "You are " + getDescription();
+        String returnString = getDescription();
         if(!items.isEmpty()) {
             returnString += " which contains" + getItemString();
         }
