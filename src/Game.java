@@ -123,6 +123,9 @@ public class Game
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
+        else if (commandWord.equals("look")) {
+            printLocationInfo();
+        }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
