@@ -1,3 +1,5 @@
+import javax.imageio.spi.ImageInputStreamSpi;
+
 /**
  *  This class is the main class of the "World of Zuul" application. 
  *  "World of Zuul" is a very simple, text based adventure game.  Users 
@@ -25,7 +27,7 @@ public class Game
      */
     public Game() 
     {
-        player = new Player("laurien");
+        player = new Player("laurien", 30);
         createGame();
         parser = new Parser();
     }
@@ -95,10 +97,10 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        printLocationInfo();
+        printPlayerInfo();
     }
 
-    private void printLocationInfo() {
+    private void printPlayerInfo() {
         System.out.println(player.getInfo());
         System.out.println();
     }
@@ -126,7 +128,7 @@ public class Game
                 goRoom(command);
                 break;
             case "look":
-                printLocationInfo();
+                printPlayerInfo();
                 break;
             case "take":
                 take(command);
@@ -175,7 +177,7 @@ public class Game
             System.out.println("There is no door!");
         }
         else {
-            printLocationInfo();
+            printPlayerInfo();
         }
     }
 
@@ -188,10 +190,13 @@ public class Game
 
         String itemName = command.getSecondWord();
 
-        if (player.take(itemName)) {
-
+        TakeStatus status = player.take(itemName);
+        if (status.equals(TakeStatus.SUCCESS)) {
+            printPlayerInfo();
+        } else if(status.equals(TakeStatus.TOOHEAVY)) {
+            System.out.println("The item with the name " + itemName + " is too heavy");
         } else {
-            System.out.println("There is no item with the name " +itemName);
+            System.out.println("There is no item with the name " + itemName);
         }
 
     }

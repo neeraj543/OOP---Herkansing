@@ -42,7 +42,14 @@ public class Room
     }
 
     public Item getItem(String itemName) {
-        return null;
+        Item findItem = null;
+        for(Item item : items) {
+            if(itemName.equals(item.getName())) {
+                findItem = item;
+            }
+        }
+        if(findItem!=null) items.remove(findItem);
+        return findItem;
     }
 
     public void setExit(String direction, Room room) {
