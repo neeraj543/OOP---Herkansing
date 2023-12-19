@@ -1,5 +1,5 @@
 public enum CommandWord {
-    GO("go"), LOOK("look"), TAKE("take"), DROP("drop"), EAT("eat"),
+    GO("go"), BACK("back"), LOOK("look"), TAKE("take"), DROP("drop"), EAT("eat"),
     HELP("?"), QUIT("stop"), UNKNOWN("");
     private String word;
 

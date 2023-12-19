@@ -119,6 +119,9 @@ public class Game
             case HELP:
                 printHelp();
                 break;
+            case BACK:
+                
+                break;
             case GO:
                 goRoom(command);
                 break;
