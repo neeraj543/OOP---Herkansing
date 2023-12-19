@@ -95,7 +95,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Type '" + CommandWord.HELP.getWord() + "' if you need help.");
         System.out.println();
         printPlayerInfo();
     }
@@ -127,6 +127,12 @@ public class Game
                 break;
             case TAKE:
                 take(command);
+                break;
+            case DROP:
+                System.out.println("Not yet implemented");
+                break;
+            case EAT:
+                System.out.println("I have eaten and have my full strength again");
                 break;
             case QUIT:
                 wantToQuit = quit(command);

@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * This class is part of the "World of Zuul" application. 
@@ -25,11 +26,11 @@ public class CommandWords
     public CommandWords()
     {
         validCommands = new HashMap<>();
-        validCommands.put("go", CommandWord.GO);
-        validCommands.put("quit", CommandWord.QUIT);
-        validCommands.put("look", CommandWord.LOOK);
-        validCommands.put("take", CommandWord.TAKE);
-        validCommands.put("help", CommandWord.HELP);
+        for(CommandWord cw : CommandWord.values()) {
+            if(cw!=CommandWord.UNKNOWN) {
+                validCommands.put(cw.getWord(), cw);
+            }
+        }
     }
 
     public CommandWord getValue(String aString) {
