@@ -114,29 +114,26 @@ public class Game
     {
         boolean wantToQuit = false;
 
-        if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
-            return false;
-        }
-
-        String commandWord = command.getCommandWord();
+        CommandWord commandWord = command.getCommandWord();
         switch (commandWord) {
-            case "help":
+            case HELP:
                 printHelp();
                 break;
-            case "go":
+            case GO:
                 goRoom(command);
                 break;
-            case "look":
+            case LOOK:
                 printPlayerInfo();
                 break;
-            case "take":
+            case TAKE:
                 take(command);
                 break;
-            case "quit":
+            case QUIT:
                 wantToQuit = quit(command);
                 break;
+            case UNKNOWN:
             default:
+                System.out.println("I don't know what you mean...");
         }
         return wantToQuit;
     }
