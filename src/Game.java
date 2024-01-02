@@ -120,7 +120,6 @@ public class Game
                 printHelp();
                 break;
             case BACK:
-                
                 break;
             case GO:
                 goRoom(command);
