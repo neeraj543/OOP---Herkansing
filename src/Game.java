@@ -74,7 +74,8 @@ public class Game
         safeRoom.setItem(new Item("diamond", "a very rare, big and beautiful diamond", 0.23));
         sanctuary.setItem(new Item("key", "the key to open the safe room", 0.2));
         theater.setExit(Room.NORTH, sanctuary);
-        theater.setExit(Room.SOUTH, safeRoom);    }
+        theater.setExit(Room.SOUTH, safeRoom);
+    }
 
     /**
      *  Main play routine.  Loops until end of play.
