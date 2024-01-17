@@ -68,8 +68,8 @@ public class Game
         cellar.setItem(new Item("bakcola1", "een bak cola", 7.1));
         cellar.setItem(new Item("vatpils1", "een vat pils", 53.7));
 
-        Room sanctuary = new Room("a sanctuary where one can find peace of mind and other valuable things");
-        Room safeRoom = new Room("a safe room with valuables");
+        Room sanctuary = new Room("in a sanctuary where one can find peace of mind and other valuable things");
+        Room safeRoom = new Room("in a safe room with valuables");
         safeRoom.setItem(new Item("cash", "20400 € in bank notes of 100 €", 0.92));
         safeRoom.setItem(new Item("diamond", "a very rare, big and beautiful diamond", 0.23));
         sanctuary.setItem(new Item("key", "the key to open the safe room", 0.2));
