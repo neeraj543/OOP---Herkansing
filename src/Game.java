@@ -61,22 +61,20 @@ public class Game
 
         player.setCurrentRoom(outside);
 
+        Item fireaxe = new Item("fireaxe", "fireman's axe to break through doors", 1.7);
+        Item laptop = new Item("laptop", "marc's laptop", 3.7);
+        office.setItem(laptop);
+        office.setItem(fireaxe);
+        outside.setItem(new Item("shovel", "you can dig or hit", 2.1));
+        outside.setItem(new Item("pubboard", "thomas more is the best", 4.7));
+        outside.setItem(new Item("keg", "a keg filled with beer just delivered", 72.8));
+        cellar.setItem(new Item("barrel", "barrel filled with suspicious liquid", 40.7));
         Item bakbier1;
-        bakbier1 = new Item("bakbier1", "een bak westmalle trappist", 8.3);
+        bakbier1 = new Item("beer1", "a crate of westmalle trappist", 8.3);
         cellar.setItem(bakbier1);
-        cellar.setItem(new Item("dooschips1", "een doos paprika chips", 0.8));
-        cellar.setItem(new Item("bakcola1", "een bak cola", 7.1));
-        cellar.setItem(new Item("vatpils1", "een vat pils", 53.7));
-
-        Room sanctuary = new Room("in a sanctuary where one can find peace of mind and other valuable things");
-        Room safeRoom = new Room("in a safe room with valuables");
-        safeRoom.setItem(new Item("cash", "20400 € in bank notes of 100 €", 0.92));
-        safeRoom.setItem(new Item("diamond", "a very rare, big and beautiful diamond", 0.23));
-        sanctuary.setItem(new Item("key", "the key to open the safe room", 0.2));
-        theater.setExit(Room.NORTH, sanctuary);
-        sanctuary.setExit(Room.SOUTH, theater);
-        theater.setExit(Room.SOUTH, safeRoom);
-        safeRoom.setExit(Room.NORTH, theater);
+        cellar.setItem(new Item("chips1", "a box of paprika chips", 0.8));
+        cellar.setItem(new Item("cola1", "a crate of cola", 7.1));
+        cellar.setItem(new Item("beer2", "a crate of beer", 53.7));
     }
 
     /**
