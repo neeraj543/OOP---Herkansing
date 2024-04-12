@@ -69,12 +69,11 @@ public class Game
         outside.setItem(new Item("pubboard", "thomas more is the best", 4.7));
         outside.setItem(new Item("keg", "a keg filled with beer just delivered", 72.8));
         cellar.setItem(new Item("barrel", "barrel filled with suspicious liquid", 40.7));
-        Item bakbier1;
-        bakbier1 = new Item("beer1", "a crate of westmalle trappist", 8.3);
-        cellar.setItem(bakbier1);
-        cellar.setItem(new Item("chips1", "a box of paprika chips", 0.8));
-        cellar.setItem(new Item("cola1", "a crate of cola", 7.1));
-        cellar.setItem(new Item("beer2", "a crate of beer", 53.7));
+        Item posture;
+        posture = new Item("posture", "a posture of a famous writer", 8.3);
+        cellar.setItem(posture);
+        cellar.setItem(new Item("box", "a box with all kind of things in it", 3.8));
+        cellar.setItem(new Item("cup", "a cup won during the olympic games of 1924", 7.1));
     }
 
     /**
