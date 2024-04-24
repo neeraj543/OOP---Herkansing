@@ -1,9 +1,10 @@
-public class ColoredItem implements IColor {
+public class ColoredItem  extends Item implements IColor{
 
     private Color color;
 
 
     public ColoredItem() {
+        super();
         color = Color.NONE;
     }
 
