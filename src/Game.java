@@ -134,11 +134,11 @@ public class Game
             case LOOK:
                 printPlayerInfo();
                 break;
-            case TAKE:
+            case TAKE, GRAB:
                 take(command);
                 break;
             case DROP:
-                System.out.println("Not yet implemented");
+                drop(command);
                 break;
             case EAT:
                 System.out.println("I have eaten and have my full strength again");
@@ -213,6 +213,25 @@ public class Game
 
     }
 
+    private void drop(Command command) {
+        if(!command.hasSecondWord()) {
+            // if there is no second word, we don't know what to take...
+            System.out.println("drop what?");
+            return;
+        }
+
+        String itemName = command.getSecondWord();
+
+        DropStatus status = player.drop(itemName);
+        if (status.equals(DropStatus.SUCCESS)) {
+            printPlayerInfo();
+        } else if(status.equals(DropStatus.NOTPRESENTINBAG)) {
+            System.out.println("Laurien has no item with the name " + itemName + " in the bag");
+        }
+
+    }
+
+
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
@@ -228,6 +247,7 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
+
 
     public static void main(String[] args) {
         Game game = new Game();

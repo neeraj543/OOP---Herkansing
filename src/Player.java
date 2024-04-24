@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Player {
@@ -54,6 +55,28 @@ public class Player {
             return TakeStatus.NOTPRESENT;
         }
     }
+
+//    public Item getItemFromBag(String itemName) {
+//        Item findItem = null;
+//        for(Item item : bag) {
+//            if(itemName.equals(item.getName())) {
+//                findItem = item;
+//            }
+//        }
+//        return findItem;
+//    }
+
+    public DropStatus drop(String itemName) {
+        Item item = currentRoom.getItem(itemName);
+        if(!bag.isEmpty() && bag.contains(item)) {
+            bag.remove(item);
+            return DropStatus.SUCCESS;
+        } else {
+            return DropStatus.NOTPRESENTINBAG;
+        }
+    }
+
+
 
     public String getInfo() {
         String info = name;
