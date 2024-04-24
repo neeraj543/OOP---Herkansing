@@ -149,6 +149,8 @@ public class Game
                 break;
             case PAINT:
                 paint(command);
+            case FIND:
+                find(command);
             case UNKNOWN:
             default:
                 System.out.println("I don't know what you mean...");
@@ -236,6 +238,27 @@ public class Game
     private void paint(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("paint what?");
+            return;
+        }
+
+        String itemName = command.getSecondWord();
+
+        PaintStatus status = player.paint(itemName);
+        if (status.equals(PaintStatus.SUCCESS)) {
+            printPlayerInfo();
+            System.out.println(" The item with the name" +  itemName +  "is painted" ); //Color);
+        } else if(status.equals(PaintStatus.NOTPOSSIBLE)) {
+            System.out.println("The item with the name " + itemName + " cannot be painted");
+        } else {
+            System.out.println("There is no item with the name " + itemName + " in the room");
+        }
+
+    }
+
+
+    private void find(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("find what?");
             return;
         }
 

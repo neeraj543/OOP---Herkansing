@@ -1,11 +1,14 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Player {
     private String name;
     private double maxWeight;
     private Room currentRoom;
     private ArrayList<Item> bag;
+
+    
 
     public Player(String name, double maxWeight) {
         bag = new ArrayList<>();
@@ -88,6 +91,8 @@ public class Player {
             return PaintStatus.NOTPRESENT;
         }
     }
+
+
 
 
 
