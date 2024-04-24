@@ -76,6 +76,21 @@ public class Player {
         }
     }
 
+    public PaintStatus paint(String itemName) {
+        Item item = currentRoom.getItem(itemName);
+        if(item!=null // && !item.getName(laptop)
+        )  {
+            return PaintStatus.SUCCESS;
+        } else if(item!=null) {
+            currentRoom.setItem(item);
+            return PaintStatus.NOTPOSSIBLE;
+        } else {
+            return PaintStatus.NOTPRESENT;
+        }
+    }
+
+
+
 
 
     public String getInfo() {
@@ -89,5 +104,6 @@ public class Player {
         }
         info += " is " + currentRoom.getFullDescription();
         return info;
+        }
     }
-}
+
