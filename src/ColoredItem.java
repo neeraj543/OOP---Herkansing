@@ -1,10 +1,10 @@
-public class ColoredItem  extends Item implements IColor{
+public class ColoredItem extends Item implements IColor{
 
     private Color color;
 
 
-    public ColoredItem() {
-        super();
+    public ColoredItem(String name, String description, double weight ) {
+        super(name, description, weight);
         color = Color.NONE;
     }
 

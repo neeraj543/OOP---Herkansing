@@ -61,19 +61,19 @@ public class Game
 
         player.setCurrentRoom(outside);
 
-        Item fireaxe = new Item("fireaxe", "fireman's axe to break through doors", 1.7);
+        Item fireaxe = new ColoredItem("fireaxe", "fireman's axe to break through doors", 1.7);
         Item laptop = new Item("laptop", "marc's laptop", 3.7);
         office.setItem(laptop);
         office.setItem(fireaxe);
-        outside.setItem(new Item("shovel", "you can dig or hit", 2.1));
-        outside.setItem(new Item("pubboard", "thomas more is the best", 4.7));
-        outside.setItem(new Item("keg", "a keg filled with beer just delivered", 72.8));
-        cellar.setItem(new Item("barrel", "barrel filled with suspicious liquid", 40.7));
+        outside.setItem(new ColoredItem("shovel", "you can dig or hit", 2.1));
+        outside.setItem(new ColoredItem("pubboard", "thomas more is the best", 4.7));
+        outside.setItem(new ColoredItem("keg", "a keg filled with beer just delivered", 72.8));
+        cellar.setItem(new ColoredItem("barrel", "barrel filled with suspicious liquid", 40.7));
         Item posture;
-        posture = new Item("posture", "a posture of a famous writer", 8.3);
+        posture = new ColoredItem("posture", "a posture of a famous writer", 8.3);
         cellar.setItem(posture);
-        cellar.setItem(new Item("box", "a box with all kind of things in it", 3.8));
-        cellar.setItem(new Item("cup", "a cup won during the olympic games of 1924", 7.1));
+        cellar.setItem(new ColoredItem("box", "a box with all kind of things in it", 3.8));
+        cellar.setItem(new ColoredItem("cup", "a cup won during the olympic games of 1924", 7.1));
     }
 
     /**
@@ -228,7 +228,13 @@ public class Game
         } else if(status.equals(DropStatus.NOTPRESENTINBAG)) {
             System.out.println("Laurien has no item with the name " + itemName + " in the bag");
         }
+    }
 
+    private void paint(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("paint what?");
+            return;
+        }
     }
 
 
